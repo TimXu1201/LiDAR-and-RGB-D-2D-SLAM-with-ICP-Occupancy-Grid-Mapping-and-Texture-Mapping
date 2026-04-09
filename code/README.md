@@ -1,51 +1,56 @@
-# ECE276A Project 2: 2D SLAM
+# 2D SLAM Code Guide
 
-# Dependencies
+This folder contains the implementation for LiDAR and RGB-D 2D SLAM, including dead reckoning, ICP scan matching, occupancy-grid mapping, texture mapping, and graph-based pose refinement.
 
- pip install numpy scipy matplotlib opencv-python gtsam
+## Dependencies
 
-# Directory Structure
+```bash
+pip install numpy scipy matplotlib opencv-python gtsam
+```
 
-Ensure your data is organized as follows relative to the script (`pr2.py`):
-- `../data/` (Contains `Encoders*.npz`, `Hokuyo*.npz`, `Imu*.npz`, `Kinect*.npz`, and `dataRGBD/` folder)
-- `../outputs/` (Auto-generated folder where all output PNGs will be saved)
-- `icp_warm_up/data/` (Contains the .npz files for the 3D ICP warm-up)
+## Expected Data Layout
 
-# Warm-up: 3D ICP Registration
-Runs the 3D point-to-point ICP with Z-axis (yaw) discrete initialization for `drill` and `liq_container`.
+Place the local data in the following structure relative to `pr2.py`:
 
+- `../data/`
+  Contains `Encoders*.npz`, `Hokuyo*.npz`, `Imu*.npz`, `Kinect*.npz`, and `dataRGBD/`
+- `../outputs/`
+  Output folder for generated PNG results
+- `icp_warm_up/data/`
+  Small point-cloud inputs for the ICP warm-up
+
+## Example Commands
+
+### Warm-up: 3D ICP Registration
+
+```bash
 python3 pr2.py --part warmup --icp_warmup_dir icp_warm_up/data
+```
 
-# Part 1: Dead Reckoning (Odometry)
+### Dead Reckoning
 
+```bash
 python3 pr2.py --part 1 --seq 20
 python3 pr2.py --part 1 --seq 21
+```
 
-# Part 2: ICP Scan Matching
+### ICP Scan Matching
 
+```bash
 python3 pr2.py --part 2 --seq 20
 python3 pr2.py --part 2 --seq 21
+```
 
-# Part 3: Occupancy Grid & Texture Mapping
+### Occupancy Grid and Texture Mapping
 
+```bash
 python3 pr2.py --part 3 --seq 20
 python3 pr2.py --part 3 --seq 21
+```
 
-# Part 4: GTSAM Pose Graph Optimization
+### Pose Refinement
 
+```bash
 python3 pr2.py --part 4 --seq 20
 python3 pr2.py --part 4 --seq 21
-
-# Advanced Usage: Parameter Tuning
-
-If you need to fine-tune the SLAM performance, you can append these arguments to any command:
-
-# ICP Parameters:
-- `--scan_stride 2`: Downsample LiDAR rays to speed up ICP.
-- `--icp_max_iter 20`: Maximum iterations for point-to-line ICP.
-- `--max_corr 0.5`: Maximum distance (meters) to associate a point with a line.
-
-# Loop Closure (GTSAM) Parameters:
-- `--loop_radius 1.0`: Search radius (meters) for proximity-based loop closures.
-- `--loop_min_sep 30`: Minimum node separation to be considered a valid loop.
-- `--loop_mse_th 0.0015`: Maximum MSE threshold to accept a loop closure ICP match.
+```

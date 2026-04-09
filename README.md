@@ -1,8 +1,8 @@
 # LiDAR and RGB-D 2D SLAM with ICP, Occupancy Grid Mapping, and Texture Mapping
 
-This repository contains my work on **2D SLAM** using wheel odometry, LiDAR scan matching, occupancy-grid mapping, RGB-D texture mapping, and pose-graph optimization.
+This repository presents a **2D SLAM** pipeline built from wheel odometry, LiDAR scan matching, occupancy-grid mapping, RGB-D texture mapping, and graph-based trajectory refinement.
 
-The project starts from dead reckoning, improves alignment with ICP, builds geometric and textured maps, and finally refines the trajectory with graph-based optimization.
+The workflow starts from dead reckoning, improves pose consistency with ICP, builds geometric and textured maps, and then refines the final trajectory with optimization.
 
 ## Project Highlights
 
@@ -11,20 +11,20 @@ The project starts from dead reckoning, improves alignment with ICP, builds geom
 - 2D LiDAR scan matching with point-to-line ICP
 - occupancy-grid mapping from aligned range scans
 - RGB-D texture mapping on the estimated floor map
-- pose-graph optimization with GTSAM
+- graph-based pose refinement with GTSAM
 
 ## Repository Structure
 
 - `code/pr2.py`
   Main SLAM pipeline.
 - `code/icp_warm_up/`
-  ICP warm-up utilities and small reference assets.
+  ICP warm-up utilities and compact reference assets.
 - `outputs/`
-  Selected result figures for trajectory estimation, occupancy maps, texture maps, and ICP warm-up.
+  Selected figures for trajectory estimation, occupancy maps, texture maps, and ICP warm-up.
 - `docs/`
-  Supporting robot-configuration material.
-- `276A_project2.pdf`
-  Project report.
+  Supporting robot-configuration reference material.
+- `report.pdf`
+  Project Description.
 
 ## Environment
 
@@ -39,6 +39,6 @@ Typical dependencies:
 
 ## Notes
 
-- The large course dataset under `data/` is excluded from the public repository.
-- `outputs/` is kept because the figures are useful for portfolio presentation.
-- The original development setup used local relative paths expected by `code/pr2.py`; add the dataset in the expected folder layout before rerunning.
+- Raw sensor logs and RGB-D datasets are not included in the public repository.
+- `outputs/` is kept because the figures are useful for understanding the pipeline and final results.
+- `code/pr2.py` expects a local folder layout for input data, so the dataset path structure should be recreated before rerunning.
