@@ -1,6 +1,6 @@
 # LiDAR and RGB-D 2D SLAM with ICP, Occupancy Grid Mapping, and Texture Mapping
 
-This repository contains my ECE 276A Project 2 work on **2D SLAM** using wheel odometry, LiDAR scan matching, occupancy-grid mapping, RGB-D texture mapping, and pose-graph optimization.
+This repository contains my work on **2D SLAM** using wheel odometry, LiDAR scan matching, occupancy-grid mapping, RGB-D texture mapping, and pose-graph optimization.
 
 The project starts from dead reckoning, improves alignment with ICP, builds geometric and textured maps, and finally refines the trajectory with graph-based optimization.
 
