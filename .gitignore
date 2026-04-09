@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Raw course data
+data/
+
+# Temporary or local-only artifacts
+code/test_ranges.npy
+code/project_2_code.zip
+code/__pycache__/
+code/icp_warm_up/__pycache__/
+
+# Archives
+*.zip
